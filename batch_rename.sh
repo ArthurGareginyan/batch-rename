@@ -13,10 +13,10 @@
 # License URI:  http://opensource.org/licenses/MIT            #
 #=============================================================#
 
-#               	USAGE:
-#		chmod +x batch_rename.sh
-#		cd /home/user/example
-#		~/batch_rename.sh "find_this" "replace_with_this"
+#                  USAGE:
+#        chmod +x batch_rename.sh
+#        cd /home/user/example
+#        ~/batch_rename.sh "find_this" "replace_with_this"
 
 # Check for proper priveliges
 [ "`whoami`" = root ] || exec sudo "$0" "$@"
@@ -38,7 +38,7 @@ esac
 
 ################### SETUP VARIABLES #######################
 number=0                    # Number of renamed.
-number_not=0		        # Number of not renamed.
+number_not=0                # Number of not renamed.
 IFS=$'\n'
 array=( `find ./ -type d` ) # Find catalogs recursively.
 
@@ -52,25 +52,25 @@ do
     # Search of all files in the current directory.
     for name in *
     do
-     	# Check for spaces in names of files and directories.
-	    echo "$name" | grep -q "$1"
-	    if [ $? -eq 0 ]
-	       then
-	     	# Renaming.
-	        newname=`echo $name | sed -e "s/$1/$2/g"`
-    		if [ -e $newname ]
-            	then
-    			    let "number_not +=1"
-                    echo " Not renaming: $name"
-            	else
-            		# Plus one to number.
-                	let "number += 1"
-                    # Message about rename.
-                	echo "$number Renaming: ${array[i]}/$name"
-                	# Rename.
-    		        mv "$name" "$newname"
-    		fi
-	    fi
+        # Check for spaces in names of files and directories.
+        echo "$name" | grep -q "$1"
+        if [ $? -eq 0 ]
+            then
+                # Renaming.
+                newname=`echo $name | sed -e "s/$1/$2/g"`
+                if [ -e $newname ]
+                    then
+                        let "number_not +=1"
+                        echo " Not renaming: $name"
+                    else
+                        # Plus one to number.
+                        let "number += 1"
+                        # Message about rename.
+                        echo "$number Renaming: ${array[i]}/$name"
+                        # Rename.
+                        mv "$name" "$newname"
+                fi
+        fi
     done
     # Go back.
     popd >/dev/null 2>&1
@@ -88,9 +88,9 @@ if [ "$number" -eq "0" ]
         echo -en "\n Nothing been renamed.\n"
 elif [ "$number" -eq "1" ]
     then
-       echo -en "\n $number renamed.\n"
+        echo -en "\n $number renamed.\n"
     else
-       echo -en "\n Renamed files and catalogs: $number\n"
+        echo -en "\n Renamed files and catalogs: $number\n"
 fi
 
 exit 0
