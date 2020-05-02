@@ -87,9 +87,9 @@ if [ "$number" -eq "0" ]
     then
         echo -en "\n Nothing been renamed.\n"
 elif [ "$number" -eq "1" ]
-   then
+    then
        echo -en "\n $number renamed.\n"
-   else
+    else
        echo -en "\n Renamed files and catalogs: $number\n"
 fi
 
