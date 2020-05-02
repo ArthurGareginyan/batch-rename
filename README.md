@@ -47,9 +47,9 @@ chmod +x batch_rename.sh
 cd /home/user/example
 ```
 
-3. Run the `batch_rename.sh` file with two parameters. I this example parameters are set to ` ` (space) and `_` (underscore).
+3. Run the `batch_rename.sh` file with two parameters. Syntax is `batch_rename.sh "find_this" "replace_with_this"`. In this example parameters are set to ` ` (space) and `_` (underscore).
 ```
-~/batch_rename.sh ' ' '_'
+~/batch_rename.sh " " "_"
 ```
 
 > **Note!** In the example above, the `batch_rename.sh` file is located in the user home directory (`~/`). Change it according to the location of the file in your case.
